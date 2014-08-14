@@ -1,4 +1,4 @@
-part of router;
+part of web_router;
 
 /**
  * A [Route] which only matches requests whose path and request method match

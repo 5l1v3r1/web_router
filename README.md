@@ -9,7 +9,7 @@ The library aims to provide convenience when you want it, and expandability when
 You can create a simple web server which hosts one page, "/a.txt", as follows:
 
     import 'dart:io';
-    import 'package:router/router.dart';
+    import 'package:web_router/web_router.dart';
     
     void main() {
       Router router = new Router();

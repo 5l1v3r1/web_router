@@ -1,4 +1,4 @@
-import 'package:router/router.dart';
+import 'package:web_router/web_router.dart';
 import 'dart:io';
 import 'dart:async';
 

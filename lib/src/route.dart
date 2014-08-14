@@ -1,4 +1,4 @@
-part of router;
+part of web_router;
 
 /**
  * A handler for new incoming requests. A handler may decide whether it can

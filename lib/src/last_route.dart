@@ -1,4 +1,4 @@
-part of router;
+part of web_router;
 
 /**
  * A method which is called to handle a [RouteRequest].

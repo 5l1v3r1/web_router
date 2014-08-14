@@ -21,7 +21,7 @@
  *     });
  *
  */
-library router;
+library web_router;
 
 import 'dart:io';
 import 'dart:async';

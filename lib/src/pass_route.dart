@@ -1,4 +1,4 @@
-part of router;
+part of web_router;
 
 /**
  * A handler which returns a [Future] that may complete with any value. When the
