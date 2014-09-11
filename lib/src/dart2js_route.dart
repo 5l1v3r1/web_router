@@ -30,14 +30,14 @@ abstract class Dart2JSRoute {
    */
   Future<bool> handle(RouteRequest request) {
     HttpResponse response = request.request.response;
-    response.contentType = ContentType.parse('text/javascript');
+    response.headers.contentType = new ContentType('text', 'javascript');
     if (_compileFuture != null) {
       _compileFuture = _compileFuture.then((String result) {
-        response..add(result)..close();
+        response..write(result)..close();
         return result;
       });
     } else if (_compiled != null && !rebuildOnChange) {
-      response..add(result)..close();
+      response..write(result)..close();
     } else {
       _compileFuture = _fileUpdated().then((bool updated) {
         if (!updated) {
@@ -48,7 +48,7 @@ abstract class Dart2JSRoute {
       }).then((String result) {
         _compiled = result;
         _compileFuture = null;
-        response..add(result)..close();
+        response..write(result)..close();
         return result;
       });
     }
@@ -56,10 +56,7 @@ abstract class Dart2JSRoute {
   }
   
   Future<bool> _fileUpdated() {
-    if (_lastModified == null) {
-      return new Future(() => true);
-    }
-    return new File(sourcePath).stat((FileStat stats) {
+    return new File(sourcePath).stat().then((FileStat stats) {
       if (stats.modified != _lastModified) {
         _lastModified = stats.modified;
         return true;
@@ -74,14 +71,14 @@ abstract class Dart2JSRoute {
     // return the result
     String jsPath;
     Directory outputDirectory;
-    return Directory.createTemp().then((Directory d) {
+    return Directory.systemTemp.createTemp().then((Directory d) {
       outputDirectory = d;
       jsPath = path_library.join(d.absolute.path, 'out.js');
       List<String> args = ['-m', sourcePath, '-o', jsPath];
-      return new Process.run(compilerCommand, args);
+      return Process.run(compilerCommand, args);
     }).then((_) {
       // TODO: potentially check process return value for error
-      return File.readAsString(jsPath);
+      return new File(jsPath).readAsString();
     }).then((String contents) {
       RegExp sourceMapping = new RegExp('//# sourceMappingURL=.*\n');
       String result = contents.replaceFirst(sourceMapping, '');
