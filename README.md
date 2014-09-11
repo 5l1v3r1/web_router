@@ -21,6 +21,14 @@ You can create a simple web server which hosts one page, "/a.txt", as follows:
       });
     }
 
+# TODO
+
+I want to implement these features and test the stability of this library before calling it version 0.1.0.
+
+ * Stream-based listening system that respects Zones
+ * Built-in static file server
+ * Support for cookies and sessions
+
 # Inspiration
 
 **router** is partly inspired by [express.js](https://www.npmjs.org/package/express). However, express is not object-oriented and specifically future-oriented the way **router** is.
