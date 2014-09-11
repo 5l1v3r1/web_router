@@ -28,6 +28,7 @@ I want to implement these features and test the stability of this library before
  * Stream-based listening system that respects Zones
  * Built-in static file server
  * Support for cookies and sessions
+ * (Pontentially) support for websockets
 
 # Inspiration
 
