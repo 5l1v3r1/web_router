@@ -86,6 +86,37 @@ class Router extends Route {
   }
   
   /**
+   * Serve a static file at a specified [localPath].
+   * 
+   * The file located at [localPath] will be served when a request comes in for
+   * [urlPath].
+   * 
+   * The [method] argument lets you specify the request method to match. The
+   * [caseSensitive] flag determines if [urlPath] should be matched in a
+   * case-sensitive way.
+   * 
+   * The [type] argument specifies the MIME type to send in the response. By
+   * default, the MIME type is derived from the file extension of [localPath]. 
+   */
+  void staticFile(String urlPath, String localPath,
+                  {String method: 'GET', bool caseSensitive: true,
+                   ContentType type: null}) {
+    add(new FilePathRoute(urlPath, 'GET', caseSensitive, localPath,
+        contentType: type));
+  }
+  
+  /**
+   * Serve a directory from the file system.
+   * 
+   * Whenever a request comes in for a file inside of [urlPath], the
+   * corresponding path within [localPath] is read from the local file system
+   * and piped to the response.
+   */
+  void staticDirectory(String urlPath, String localPath) {
+    add(new DirectoryRoute(urlPath, localPath));
+  }
+  
+  /**
    * The default 404 handler. This is called when [httpHandler] is called but no
    * routes assume responsibility of the request.
    */
