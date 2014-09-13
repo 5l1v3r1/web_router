@@ -1,13 +1,11 @@
 import 'package:web_router/web_router.dart';
 import 'dart:io';
-import 'dart:async';
 
 void main() {
   Router router = new Router();
   router.get('', homepage);
   router.get('/', homepage);
-  router.add(new Dart2JSPathRoute('/script.dart.js', 'GET', true, 
-                                  './sample_script.dart'));
+  router.dart2js('/script.dart.js', './sample_script.dart');
   HttpServer.bind('localhost', 1337).then((HttpServer server) {
     server.listen(router.httpHandler);
   });

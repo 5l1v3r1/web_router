@@ -76,8 +76,10 @@ abstract class Dart2JSRoute {
       jsPath = path_library.join(d.absolute.path, 'out.js');
       List<String> args = ['-m', sourcePath, '-o', jsPath];
       return Process.run(compilerCommand, args);
-    }).then((_) {
-      // TODO: potentially check process return value for error
+    }).then((ProcessResult res) {
+      if (res.exitCode != 0) {
+        return 'console.error("failed to compile $sourcePath");';
+      }
       return new File(jsPath).readAsString();
     }).then((String contents) {
       RegExp sourceMapping = new RegExp('//# sourceMappingURL=.*\n');

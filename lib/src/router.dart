@@ -117,6 +117,30 @@ class Router extends Route {
   }
   
   /**
+   * Serve a JavaScript source file by compiling a Dart source file.
+   * 
+   * The created route will serve [urlPath] by compiling the Dart script
+   * [filePath].
+   * 
+   * The [method] and [caseSensitive] arguments act just like they would for
+   * [post] and [get].
+   * 
+   * Specify `false` for [rebuildOnChange] to prevent the route from
+   * recompiling the script when it changes.
+   * 
+   * By default, the path to the `dart2js` command is determined using the path
+   * to the `dart` command running this isolate. You may specify
+   * a different [compilerCommand] if you wish to use a different SDK to
+   * compile the Dart script.
+   */
+  void dart2js(String urlPath, String filePath, {String method: 'GET',
+               bool caseSensitive: true, bool rebuildOnChange: true,
+               String compilerCommand: null}) {
+    add(new Dart2JSPathRoute(urlPath, method, caseSensitive, filePath,
+        compilerCommand: compilerCommand, rebuildOnChange: rebuildOnChange));
+  }
+  
+  /**
    * The default 404 handler. This is called when [httpHandler] is called but no
    * routes assume responsibility of the request.
    */
