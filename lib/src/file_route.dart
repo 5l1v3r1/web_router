@@ -14,6 +14,7 @@ abstract class FileRoute {
    * Returns a [Future] that completes with `false`.
    */
   Future<bool> handle(RouteRequest request) {
+    request.request.response.headers.contentType = contentType;
     new File(filePath).openRead().pipe(request.request.response);
     return new Future(() => false);
   }

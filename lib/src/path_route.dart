@@ -32,9 +32,12 @@ abstract class PathRoute extends Route {
    * matches [path].
    */
   bool matchesRequest(RouteRequest request) {
-    if (request.request.method.toLowerCase() != method.toLowerCase()) {
-      print('wrong method');
-      return false;
+    String reqMethod = request.request.method.toLowerCase();
+    String expectMethod = method.toLowerCase();
+    if (reqMethod != expectMethod) {
+      if (reqMethod != 'head' || expectMethod != 'get') {
+        return false;
+      }
     }
     String aPath = request.request.uri.path;
     if (caseSensitive) {
