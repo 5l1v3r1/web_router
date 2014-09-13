@@ -15,8 +15,8 @@ class Router extends Route {
   Router() : _routes = <Route>[];
   
   /**
-   * Handle an [HttpRequest] by converting it to a [RouteRequest] and passing it
-   * to [handle].
+   * Handle an [HttpRequest] by converting it to a [RouteRequest] and passing
+   * it to [handle].
    */
   void httpHandler(HttpRequest request) {
     RouteRequest routeReq = new RouteRequest(request);
@@ -68,7 +68,8 @@ class Router extends Route {
   /**
    * Like [get], but the registered handler is simply a pass in the handler
    * chain. This means that the handler must return a [Future] which completes
-   * to signal that the request should be passed to the next applicable [Route].
+   * to signal that the request should be passed to the next applicable
+   * [Route].
    */
   void getPass(String path, PassRouteFunction function,
                {bool caseSensitive: true}) {
@@ -78,7 +79,8 @@ class Router extends Route {
   /**
    * Like [post], but the registered handler is simply a pass in the handler
    * chain. This means that the handler must return a [Future] which completes
-   * to signal that the request should be passed to the next applicable [Route].
+   * to signal that the request should be passed to the next applicable
+   * [Route].
    */
   void postPass(String path, PassRouteFunction function,
                 {bool caseSensitive: true}) {
@@ -141,8 +143,28 @@ class Router extends Route {
   }
   
   /**
-   * The default 404 handler. This is called when [httpHandler] is called but no
-   * routes assume responsibility of the request.
+   * Add a route which redirects [path] to [location].
+   * 
+   * The [location] argument may be a [Uri] or a [String].
+   * 
+   * The [method] and [caseSensitive] arguments act just like they would for
+   * [post] and [get].
+   */
+  void redirect(String path, dynamic location, {String method: 'GET',
+                bool caseSensitive: true}) {
+    if (location is String) {
+      add(new RedirectPathRoute(path, method, caseSensitive,
+          Uri.parse(location)));
+    } else if (location is Uri) {
+      add(new RedirectPathRoute(path, method, caseSensitive, location));
+    } else {
+      throw new ArgumentError('redirect location must be a String or a Uri');
+    }
+  }
+  
+  /**
+   * The default 404 handler. This is called when [httpHandler] is called but
+   * no routes assume responsibility of the request.
    */
   void sendUnhandled(HttpResponse response) {
     response.statusCode = 404;

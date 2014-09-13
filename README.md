@@ -25,11 +25,10 @@ You can create a simple web server which hosts one page, "/a.txt", as follows:
 
 I want to implement these features and test the stability of this library before calling it version 0.1.0.
 
- * Built-in static file server
- * Utility methods to serve static files and Dart2JS sources
+ * Directory listings for static directory server
  * Support for cookies and sessions
- * (Pontentially) support for websockets
+ * Support for websockets
 
 # Inspiration
 
-**web_router** is partly inspired by [express.js](https://www.npmjs.org/package/express). However, express is not object-oriented and specifically future-oriented the way *web_router* is.
+**web_router** is partly inspired by [express.js](https://www.npmjs.org/package/express). However, express is neither object-oriented nor future-oriented the way *web_router* is.
