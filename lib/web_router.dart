@@ -35,3 +35,5 @@ part 'src/last_route.dart';
 part 'src/pass_route.dart';
 part 'src/dart2js_route.dart';
 part 'src/dart2js_path_route.dart';
+part 'src/last_path_route.dart';
+part 'src/pass_path_route.dart';

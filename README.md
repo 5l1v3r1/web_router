@@ -1,6 +1,6 @@
 # Overview
 
-**router** is a simple and expandable way to route HTTP requests.
+**web_router** is a simple and dynamic way to route HTTP requests.
 
 The library aims to provide convenience when you want it, and expandability when you need it. On one hand, the `Router` class provides convenient methods like `get` and `post` to let you register request handlers in one line of code. On the other hand, it has the `add` and `remove` methods so you can drop in custom routing objects anywhere in the stack.
 
@@ -25,11 +25,11 @@ You can create a simple web server which hosts one page, "/a.txt", as follows:
 
 I want to implement these features and test the stability of this library before calling it version 0.1.0.
 
- * Stream-based listening system that respects Zones
  * Built-in static file server
+ * Utility methods to serve static files and Dart2JS sources
  * Support for cookies and sessions
  * (Pontentially) support for websockets
 
 # Inspiration
 
-**router** is partly inspired by [express.js](https://www.npmjs.org/package/express). However, express is not object-oriented and specifically future-oriented the way **router** is.
+**web_router** is partly inspired by [express.js](https://www.npmjs.org/package/express). However, express is not object-oriented and specifically future-oriented the way *web_router* is.

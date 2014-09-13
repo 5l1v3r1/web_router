@@ -37,7 +37,7 @@ abstract class Dart2JSRoute {
         return result;
       });
     } else if (_compiled != null && !rebuildOnChange) {
-      response..write(result)..close();
+      response..write(_compiled)..close();
     } else {
       _compileFuture = _fileUpdated().then((bool updated) {
         if (!updated) {
