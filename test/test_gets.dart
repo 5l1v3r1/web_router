@@ -22,6 +22,7 @@ void main() {
   HttpServer.bind('localhost', 1337).then((HttpServer server) {
     server.listen(router.httpHandler);
   });
+  print('navigate to http://localhost:1337/');
 }
 
 void homepage(RouteRequest req) {
