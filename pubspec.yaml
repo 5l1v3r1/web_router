@@ -4,5 +4,5 @@ author: Alex Nichol <unixpickle@gmail.com>
 description: A simple and extensible web framework
 homepage: https://github.com/unixpickle/router
 dependencies:
-  mime: any
+  mime: '>=0.9.0 <0.10.0'
   path: '>=1.3.0 <2.0.0'
