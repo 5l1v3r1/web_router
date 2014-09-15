@@ -27,7 +27,7 @@ class Dart2JSPathRoute extends PathRoute with Dart2JSRoute {
                    super(path, method, caseSensitive) {
     if (compilerCommand == null) {
       String execPath = Platform.executable;
-      if (execPath.length == 0) {
+      if (execPath.length == 0 || execPath == 'dart') {
         compilerCommand = 'dart2js';
       } else {
         compilerCommand = path_library.join(path_library.dirname(execPath),

@@ -57,6 +57,9 @@ abstract class Dart2JSRoute {
   
   Future<bool> _fileUpdated() {
     return new File(sourcePath).stat().then((FileStat stats) {
+      if (stats.modified == null) {
+        return true;
+      }
       if (stats.modified != _lastModified) {
         _lastModified = stats.modified;
         return true;
