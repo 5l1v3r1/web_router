@@ -1,5 +1,5 @@
 name: web_router
-version: 0.0.6
+version: 0.0.7
 author: Alex Nichol <unixpickle@gmail.com>
 description: A simple and extensible web framework
 homepage: https://github.com/unixpickle/router
