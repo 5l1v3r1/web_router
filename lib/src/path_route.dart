@@ -39,7 +39,7 @@ abstract class PathRoute extends Route {
         return false;
       }
     }
-    String aPath = request.request.uri.path;
+    String aPath = request.uri.path;
     if (caseSensitive) {
       return aPath == path;
     } else {

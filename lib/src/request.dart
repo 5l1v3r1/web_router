@@ -16,6 +16,15 @@ class RouteRequest {
   final Map map;
   
   /**
+   * The URI of the request.
+   * 
+   * Unlike the `uri` property of the raw [request], this may be rewritten by
+   * any route. Thus, routes should generally use this property rather than the
+   * [request]'s `uri` property.
+   */
+  Uri uri;
+  
+  /**
    * The request's response field. This is for convenience only.
    */
   HttpResponse get response => request.response;
@@ -24,5 +33,7 @@ class RouteRequest {
    * Create a new request given an HTTP request. The result will have an empty
    * [map].
    */
-  RouteRequest(this.request) : map = new Map(); 
+  RouteRequest(this.request) : map = new Map() {
+    uri = request.uri;
+  }
 }

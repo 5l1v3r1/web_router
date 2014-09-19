@@ -13,7 +13,7 @@ class DirectoryRoute implements Route {
    * Return `true` if the request's path is within [urlPath].
    */
   bool matchesRequest(RouteRequest request) {
-    return path_library.posix.isWithin(urlPath, request.request.uri.path);
+    return path_library.posix.isWithin(urlPath, request.uri.path);
   }
     
   /**
@@ -44,7 +44,7 @@ class DirectoryRoute implements Route {
   }
   
   String _nativeLocalPath(RouteRequest request) {
-    String relative = path_library.posix.relative(request.request.uri.path,
+    String relative = path_library.posix.relative(request.uri.path,
         from: urlPath);
     List<String> components = path_library.posix.split(relative);
     String relNative = path_library.joinAll(components);
