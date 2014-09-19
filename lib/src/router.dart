@@ -163,6 +163,27 @@ class Router extends Route {
   }
   
   /**
+   * Add a [PathParameterRoute].
+   * 
+   * As an example, you may wish to use [pathParameter] to pass user IDs to a
+   * "profile" page:
+   * 
+   *     Router router = new Router();
+   *     router.pathParameter('/profile/', fieldName: 'userId');
+   *     router.get('/profile/', (RouteRequest r) {
+   *       r.request.response..write('User ID is ' + r.map['userId'])
+   *                         ..close();
+   *     });
+   * 
+   * This example passes the result of the [PathParameterRoute] to a [get]
+   * handler using the "userId" key in the request's map.
+   */
+  void pathParameter(String path, {String fieldName: 'parameter',
+                     bool caseSensitive: true}) {
+    add(new PathParameterRoute(path, caseSensitive, fieldName));
+  }
+  
+  /**
    * The default 404 handler. This is called when [httpHandler] is called but
    * no routes assume responsibility of the request.
    */

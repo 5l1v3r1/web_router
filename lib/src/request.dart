@@ -36,4 +36,12 @@ class RouteRequest {
   RouteRequest(this.request) : map = new Map() {
     uri = request.uri;
   }
+  
+  /**
+   * Update [uri] to contain a different [path].
+   */
+  void rewritePath(String path) {
+    uri = new Uri(scheme: uri.scheme, userInfo: uri.userInfo, host: uri.host,
+        port: uri.port, path: path, query: uri.query, fragment: uri.fragment);
+  }
 }

@@ -25,6 +25,8 @@ You can create a simple web server which hosts one page, "/a.txt", as follows:
 
 I want to implement these features and test the stability of this library before calling it version 0.1.0.
 
+ * Add example for [PathParameterRoute]
+ * Use [Pattern] instead of [String] for paths
  * Directory listings for static directory server
  * Support for cookies and sessions
  * Support for websockets

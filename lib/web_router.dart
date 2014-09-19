@@ -34,6 +34,7 @@ part 'src/request.dart';
 part 'src/path_route.dart';
 part 'src/last_route.dart';
 part 'src/pass_route.dart';
+part 'src/path_parameter_route.dart';
 part 'src/dart2js_route.dart';
 part 'src/file_route.dart';
 part 'src/directory_route.dart';
